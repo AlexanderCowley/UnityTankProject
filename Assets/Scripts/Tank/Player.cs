@@ -6,9 +6,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    int _maxHealth;
+    int _maxHealth = 3;
     int _currentHealth;
     TankController _tankController;
+
     private void Awake()
     {
         _tankController = GetComponent<TankController>();
@@ -23,11 +24,13 @@ public class Player : MonoBehaviour
     public void increaseHealth(int amount)
     {
         _currentHealth += amount;
+        print(_currentHealth);
     }
 
     public void decreaseHealth(int amount)
     {
         _currentHealth -= amount;
+        print(_currentHealth);
 
         if (_currentHealth <= 0)
         {
@@ -37,11 +40,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+        print("Dead");
         gameObject.SetActive(false);
-    }
-
-    void Update()
-    {
-        
     }
 }
