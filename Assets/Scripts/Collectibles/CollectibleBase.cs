@@ -6,8 +6,10 @@ using UnityEngine;
 public abstract class CollectibleBase : MonoBehaviour
 {
     protected abstract void Collect(Player player);
+
     [SerializeField]
     float _movementSpeed = 1f;
+    protected float MovementSpeed => _movementSpeed;
 
     Rigidbody rigidBody;
 
