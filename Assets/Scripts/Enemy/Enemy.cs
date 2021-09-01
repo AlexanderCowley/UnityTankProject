@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     int _damageAmount = 1;
+
     [SerializeField]
     ParticleSystem _impactParticles;
     [SerializeField]
@@ -24,8 +25,8 @@ public class Enemy : MonoBehaviour
         Player player = collision.gameObject.GetComponent<Player>();
         if(player != null)
         {
-            PlayerImpact(player);
             ImpactFeedback();
+            PlayerImpact(player);
         }
     }
 
@@ -36,10 +37,11 @@ public class Enemy : MonoBehaviour
 
     void ImpactFeedback()
     {
-        if(_impactParticles != null)
+        if (_impactParticles != null)
         {
             _impactParticles = Instantiate(_impactParticles, 
                 transform.position, Quaternion.identity);
+            _impactParticles.Play();
         }
 
         if (_impactSound != null)

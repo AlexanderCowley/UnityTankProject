@@ -6,6 +6,9 @@ public class TankController : MonoBehaviour
 {
     [SerializeField] float _moveSpeed = .25f;
     [SerializeField] float _turnSpeed = 2f;
+    [SerializeField] int _treasureCount;
+
+    UI_TreasureCount treasureUI;
 
     public float MoveSpeed
     {
@@ -13,11 +16,23 @@ public class TankController : MonoBehaviour
         set => _moveSpeed = value;
     }
 
+    public int TreasureCount
+    {
+        get => _treasureCount;
+        set 
+        {
+            _treasureCount = value;
+            treasureUI.updateUIText(this);
+        } 
+    }
+
     Rigidbody _rb = null;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+
+        treasureUI = FindObjectOfType<UI_TreasureCount>();
     }
 
     private void FixedUpdate()

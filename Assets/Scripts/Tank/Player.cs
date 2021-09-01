@@ -7,13 +7,16 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     int _maxHealth = 3;
+    [SerializeField]
     int _currentHealth;
+    bool isInvinsible;
+    public bool IsInvinsible
+    {
+        set => isInvinsible = value;
+    }
     TankController _tankController;
 
-    private void Awake()
-    {
-        _tankController = GetComponent<TankController>();
-    }
+    private void Awake() => _tankController = GetComponent<TankController>();
 
     void Start()
     {
@@ -29,8 +32,10 @@ public class Player : MonoBehaviour
 
     public void decreaseHealth(int amount)
     {
+        if (isInvinsible)
+            return;
+
         _currentHealth -= amount;
-        print(_currentHealth);
 
         if (_currentHealth <= 0)
         {
