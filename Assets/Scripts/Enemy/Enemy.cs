@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -22,7 +20,7 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Player player = collision.gameObject.GetComponent<Player>();
+        IDamagable player = collision.gameObject.GetComponent<IDamagable>();
         if(player != null)
         {
             ImpactFeedback();
@@ -30,9 +28,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected virtual void PlayerImpact(Player player)
+    protected virtual void PlayerImpact(IDamagable player)
     {
-        player.decreaseHealth(_damageAmount);
+        player.OnImpact(_damageAmount);
     }
 
     void ImpactFeedback()
@@ -50,7 +48,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Move()
+    public virtual void Move()
     {
         
     }

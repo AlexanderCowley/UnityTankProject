@@ -14,21 +14,8 @@ public class Player : MonoBehaviour
     {
         set => isInvinsible = value;
     }
-    TankController _tankController;
 
-    private void Awake() => _tankController = GetComponent<TankController>();
-
-    void Start()
-    {
-        _currentHealth = _maxHealth;
-        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
-    }
-
-    public void increaseHealth(int amount)
-    {
-        _currentHealth += amount;
-        print(_currentHealth);
-    }
+    public void increaseHealth(int amount) => _currentHealth += amount;
 
     public void decreaseHealth(int amount)
     {
@@ -38,14 +25,8 @@ public class Player : MonoBehaviour
         _currentHealth -= amount;
 
         if (_currentHealth <= 0)
-        {
             Die();
-        }
     }
 
-    public void Die()
-    {
-        print("Dead");
-        gameObject.SetActive(false);
-    }
+    public void Die() => gameObject.SetActive(false);
 }

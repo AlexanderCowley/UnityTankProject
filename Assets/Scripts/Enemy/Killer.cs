@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Killer : Enemy
 {
-    protected override void PlayerImpact(Player player)
+    protected override void PlayerImpact(IDamagable player)
     {
-        player.Die();
+        player.OnImpact(3);
     }
 }
