@@ -5,12 +5,25 @@ public class Boss : Enemy
 {
     bool _isPlayerDetected = false;
     float _movementSpeed;
-    float _defaultSpeed = .75f;
-    float _chargingSpeed = 1.4f;
+    float _defaultSpeed = 1.2f;
+    float _chargingSpeed = 4f;
 
     bool _isAttacking = false;
 
     [SerializeField] TankController player;
+
+    [SerializeField] Projectile enemyProjectile;
+
+    EnemyShoot enemyWeapon;
+
+    [SerializeField] Transform firePosition;
+
+    MeshRenderer mesh_renderer;
+    Color _defaultColor;
+    Color _attackColor;
+    Color _delayColor;
+
+    
 
     float distanceToTarget = 3f;
     Vector3 startingPos;
@@ -21,8 +34,12 @@ public class Boss : Enemy
 
     void Awake()
     {
+        mesh_renderer = GetComponent<MeshRenderer>();
+        _defaultColor = mesh_renderer.material.color;
+
         startingPos = transform.position;
         _movementSpeed = _defaultSpeed;
+        enemyWeapon = GetComponentInChildren<EnemyShoot>();
     }
 
     public override void Move()
@@ -44,7 +61,6 @@ public class Boss : Enemy
     //Chase Target and method to decide attacks
     void TargetPlayer()
     {
-        print("huh");
         transform.position = Vector3.MoveTowards
             (transform.position, player.transform.position, _movementSpeed * Time.deltaTime);
 
@@ -54,15 +70,15 @@ public class Boss : Enemy
     bool InPlayerRange()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        return distanceToPlayer <= 3f;
+        return distanceToPlayer <= 15f;
     }
 
     void AttackPlayer()
     {
         if (InPlayerRange())
             Charge();
-        else
-            ShootProjectile();
+        //else
+            //ShootProjectile();
     }
 
     void Charge()
@@ -73,23 +89,23 @@ public class Boss : Enemy
 
             StartCoroutine(attackDelay(.5f));
             _movementSpeed = _chargingSpeed;
-            //fx
             StartCoroutine(attackDelay(2f));
+
             _movementSpeed = _defaultSpeed;
             _isAttacking = false;
-            //fx = power down
+
+            mesh_renderer.material.color = _defaultColor;
         }
     }
 
     void ShootProjectile()
     {
-        print("wha");
         if (!_isAttacking)
         {
             _isAttacking = true;
 
             StartCoroutine(attackDelay(.5f));
-            // things
+            FireWeapon();
             //fx
             StartCoroutine(attackDelay(2f));
             //end things
@@ -98,12 +114,15 @@ public class Boss : Enemy
         }
     }
 
-    IEnumerator attackDelay(float delayTimer)
+    void FireWeapon()
     {
-        yield return new WaitForSeconds(delayTimer);
-        print("finished");
-        yield return null;
+        enemyWeapon.FireWeapon(firePosition.transform, 
+            firePosition.transform.rotation, enemyProjectile);
     }
 
-    //Projectile Attack
+    IEnumerator attackDelay(float delayTimer)
+    {
+        mesh_renderer.material.color = Color.red;
+        yield return new WaitForSeconds(delayTimer);
+    }
 }

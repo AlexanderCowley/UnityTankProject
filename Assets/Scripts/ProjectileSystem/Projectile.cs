@@ -10,6 +10,12 @@ public class Projectile : MonoBehaviour
 
     Collider ProjectileCollider;
 
+    [SerializeField]
+    ParticleSystem _collectedParticles;
+
+    [SerializeField]
+    AudioClip __collectedAudioClip;
+
     public float FireSpeed
     {
         get => _moveSpeed;
@@ -27,10 +33,9 @@ public class Projectile : MonoBehaviour
         ProjectileCollider = GetComponent<Collider>();
     }
 
-    public void IgnoreSpawnerCollider(Shoot spawner)
+    public void IgnoreSpawnerCollider(Shoot spawner = null)
     {
-        Collider PlayerCollider = 
-            spawner.GetComponentInParent<Collider>();
+        Collider PlayerCollider = spawner.GetComponentInParent<Collider>();
 
         Physics.IgnoreCollision(ProjectileCollider, PlayerCollider);
     }
@@ -39,9 +44,24 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.GetComponent<LineOfSightCollider>() != null)
+            return;
+
         damagable = other.gameObject.GetComponent<IDamagable>();
         damagable?.OnImpact(0, this);
 
+        if (_collectedParticles != null)
+        {
+            _collectedParticles = Instantiate(_collectedParticles,
+                transform.position, Quaternion.identity);
+
+            _collectedParticles.Play();
+        }
+
+        if (__collectedAudioClip != null)
+        {
+            AudioHelper.PlayClip2D(__collectedAudioClip, 1f);
+        }
         Coroutine_DisableDelay();
     }
 

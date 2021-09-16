@@ -127,5 +127,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementSpeed: 1
   _collectedParticles: {fileID: 0}
-  __collectedAudioClip: {fileID: 0}
-  _valueAmount: 0
+  __collectedAudioClip: {fileID: 8300000, guid: 2d2cb20b6059c53458e40c21c815a65f, type: 3}
+  _valueAmount: 1
