@@ -44,17 +44,6 @@ public class BossAttacks : MonoBehaviour
         StartCoroutine(FireRateDelay(2f));
     }
 
-    IEnumerator delay(float timeToDelay)
-    {
-        _meshRenderer.material.color = Color.red;
-
-        yield return new WaitForSeconds(timeToDelay);
-
-        _meshRenderer.material.color = _defaultColor;
-    }
-
-    //Look over to add a delay!!!!!!
-
     IEnumerator FireRateDelay(float startingTime)
     {
         if (_isAttacking)
