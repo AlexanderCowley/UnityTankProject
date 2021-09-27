@@ -587,6 +587,7 @@ GameObject:
   - component: {fileID: 6496327986739003977}
   - component: {fileID: 8745879068025011937}
   - component: {fileID: 6654550863803982984}
+  - component: {fileID: 2839259909085170591}
   m_Layer: 5
   m_Name: Canvas_ScreenFlash
   m_TagString: Untagged
@@ -675,6 +676,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2839259909085170591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5441026352670081239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5b3db2751c3a6439527840b0a33c6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6424370739244260880
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,15 +790,15 @@ RectTransform:
   m_GameObject: {fileID: 6719739836641980984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 8, y: 8.7, z: 1}
   m_Children: []
   m_Father: {fileID: 2903533963148013670}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: -700, y: -776}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3874137434034786314
 CanvasRenderer:
@@ -808,7 +821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.754717, g: 0.004746554, b: 0.004746554, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
