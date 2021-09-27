@@ -3,11 +3,6 @@ using UnityEngine;
 
 public class ResetScene : MonoBehaviour
 {
-    void Awake()
-    {
-        
-    }
-
     void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

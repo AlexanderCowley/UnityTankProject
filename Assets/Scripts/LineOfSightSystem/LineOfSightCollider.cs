@@ -4,10 +4,7 @@ public class LineOfSightCollider : MonoBehaviour
 {
     TankController playerController;
     Boss bossCharacter;
-    void Awake()
-    {
-        bossCharacter = GetComponentInParent<Boss>();
-    }
+    void Awake() => bossCharacter = GetComponentInParent<Boss>();
 
     private void OnTriggerEnter(Collider other)
     {

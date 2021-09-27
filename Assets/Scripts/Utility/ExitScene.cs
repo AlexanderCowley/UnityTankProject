@@ -1,13 +1,7 @@
-using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class ExitScene : MonoBehaviour
 {
-    void Awake()
-    {
-        
-    }
-
     void QuitBuild()
     {
         Application.Quit();

@@ -6,11 +6,13 @@ public class CharacterHealth : MonoBehaviour, IDamagable
 {
     [SerializeField]
     int _maxHealth = 3;
-    [SerializeField]
     int _currentHealth;
 
     public delegate void OnDeath();
     public event OnDeath DeathEvent;
+
+    public delegate void OnHit(float newhealth, float maxHealth);
+    public event OnHit HitEvent;
 
     private void Awake()
     {
@@ -35,6 +37,8 @@ public class CharacterHealth : MonoBehaviour, IDamagable
             damageAmount = projectile.Damage;
 
         _currentHealth -= damageAmount;
+        HitEvent?.Invoke(_currentHealth, _maxHealth);
+
         if (_currentHealth <= 0)
             DeathEvent?.Invoke();
     }

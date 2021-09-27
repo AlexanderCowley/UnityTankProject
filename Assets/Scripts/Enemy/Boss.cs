@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class Boss : Enemy
 {
+
+    public delegate void OnPlayerDetected();
+    public event OnPlayerDetected playerDetected;
+
     bool _isPlayerDetected = false;
     float _movementSpeed;
     float _defaultSpeed = 1.2f;
@@ -29,12 +33,13 @@ public class Boss : Enemy
     public override void Move()
     {
         if (!_isPlayerDetected)
+        {
             Patrol();
+        }    
         else
             TargetPlayer();
     }
 
-    //Patrol
     void Patrol()
     {
         Vector3 velocity = startingPos;
