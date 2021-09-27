@@ -16,15 +16,9 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     AudioClip __collectedAudioClip;
 
-    public float FireSpeed
-    {
-        get => _moveSpeed;
-    }
+    public float FireSpeed {get => _moveSpeed;}
 
-    public int Damage 
-    { 
-        get => _damage;
-    }
+    public int Damage {get => _damage;}
 
     IDamagable damagable;
 
@@ -33,9 +27,13 @@ public class Projectile : MonoBehaviour
         ProjectileCollider = GetComponent<Collider>();
     }
 
-    public void IgnoreSpawnerCollider(Shoot spawner = null)
+    public void IgnoreSpawnerCollider(Shoot spawner = null, EnemyShoot enemyShoot = null)
     {
-        Collider PlayerCollider = spawner.GetComponentInParent<Collider>();
+        Collider PlayerCollider;
+        if (spawner != null)
+            PlayerCollider = spawner.GetComponentInParent<Collider>();
+        else
+            PlayerCollider = enemyShoot.GetComponentInParent<Collider>();
 
         Physics.IgnoreCollision(ProjectileCollider, PlayerCollider);
     }
@@ -50,6 +48,22 @@ public class Projectile : MonoBehaviour
         damagable = other.gameObject.GetComponent<IDamagable>();
         damagable?.OnImpact(0, this);
 
+        PlayParicleEffect();
+        PlaySFX();
+
+        Coroutine_DisableDelay();
+    }
+
+    private void PlaySFX()
+    {
+        if (__collectedAudioClip != null)
+        {
+            AudioHelper.PlayClip2D(__collectedAudioClip, 1f);
+        }
+    }
+
+    private void PlayParicleEffect()
+    {
         if (_collectedParticles != null)
         {
             _collectedParticles = Instantiate(_collectedParticles,
@@ -57,12 +71,6 @@ public class Projectile : MonoBehaviour
 
             _collectedParticles.Play();
         }
-
-        if (__collectedAudioClip != null)
-        {
-            AudioHelper.PlayClip2D(__collectedAudioClip, 1f);
-        }
-        Coroutine_DisableDelay();
     }
 
     void Coroutine_DisableDelay() => StartCoroutine(DisableDelay(disableDelay));
@@ -81,7 +89,7 @@ public class Projectile : MonoBehaviour
     void LaunchProjectile()
     {
         this.transform.position +=
-            transform.forward * FireSpeed * Time.deltaTime;
+            this.transform.forward * FireSpeed * Time.deltaTime;
     }
 
     private void Update()

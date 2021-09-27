@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52e86bded41ed744bbc3e84034ff0f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Enemy
   _damageAmount: 1
   _impactParticles: {fileID: 0}
   _impactSound: {fileID: 0}

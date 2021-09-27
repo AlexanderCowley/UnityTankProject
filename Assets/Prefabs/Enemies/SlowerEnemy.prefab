@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e762fdf9332af849bb745416cafdd15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Slower
   _damageAmount: 0
   _impactParticles: {fileID: 0}
   _impactSound: {fileID: 0}

@@ -8,6 +8,6 @@ public class EnemyShoot : MonoBehaviour
         projectile = Instantiate
             (projectile, firePos.position, fireRot);
 
-        //projectile.IgnoreSpawnerCollider(null, this);
+        projectile.IgnoreSpawnerCollider(null, this);
     }
 }

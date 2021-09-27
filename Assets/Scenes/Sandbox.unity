@@ -24817,6 +24817,8 @@ GameObject:
   - component: {fileID: 999263871}
   - component: {fileID: 999263875}
   - component: {fileID: 999263876}
+  - component: {fileID: 999263878}
+  - component: {fileID: 999263879}
   - component: {fileID: 999263877}
   m_Layer: 0
   m_Name: Boss
@@ -24932,12 +24934,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c722785de9625e4cad74606558b4b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Boss
   _damageAmount: 2
   _impactParticles: {fileID: 247955056}
   _impactSound: {fileID: 8300000, guid: 65b36919089288f4e994042e934ccb35, type: 3}
   player: {fileID: 512387693}
-  enemyProjectile: {fileID: 4447659612966597115, guid: e8a22b51e3a19be44ae6ee1da29b88df, type: 3}
-  firePosition: {fileID: 2102445622}
 --- !u!114 &999263877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24952,6 +24953,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 3
   _currentHealth: 0
+--- !u!114 &999263878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999263870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e360afe39d7d3845b8796ea6774ef8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePosition: {fileID: 2102445622}
+  _enemyProjectile: {fileID: 4447659612966597115, guid: e8a22b51e3a19be44ae6ee1da29b88df, type: 3}
+--- !u!114 &999263879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999263870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617dc27c343052a46979faa976e1ea74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _obj_projectile: {fileID: 4447659612966597115, guid: e8a22b51e3a19be44ae6ee1da29b88df, type: 3}
 --- !u!1 &1303805590
 GameObject:
   m_ObjectHideFlags: 0
@@ -30075,13 +30103,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102445621}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.599, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 538279330}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &2393322486681447105
 PrefabInstance:
   m_ObjectHideFlags: 0

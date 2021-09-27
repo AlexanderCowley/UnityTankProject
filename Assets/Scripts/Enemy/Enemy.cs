@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] public string name;
     [SerializeField]
     int _damageAmount = 1;
 

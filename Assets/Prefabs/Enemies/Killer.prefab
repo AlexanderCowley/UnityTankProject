@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d627e6440007fc34998c3a055c791c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Killer
   _damageAmount: 1
   _impactParticles: {fileID: 0}
   _impactSound: {fileID: 0}
