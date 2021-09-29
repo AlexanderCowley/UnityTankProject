@@ -4,7 +4,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] int _damage;
-    [SerializeField] float _moveSpeed;
+    [SerializeField] float _fireSpeed;
 
     [SerializeField] float disableDelay;
 
@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     AudioClip __collectedAudioClip;
 
-    public float FireSpeed {get => _moveSpeed;}
+    public float FireSpeed {get => _fireSpeed;}
 
     public int Damage {get => _damage;}
 
@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour
         ProjectileCollider = GetComponent<Collider>();
     }
 
-    public void IgnoreSpawnerCollider(Shoot spawner = null, EnemyShoot enemyShoot = null)
+    public void IgnoreSpawnerCollider(Weapon spawner = null, EnemyShoot enemyShoot = null)
     {
         Collider PlayerCollider;
         if (spawner != null)

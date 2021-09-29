@@ -17,6 +17,11 @@ public class Boss : Enemy
 
     float distanceToTarget = 3f;
     Vector3 startingPos;
+
+    public float MovementSpeed
+    {
+        set => _movementSpeed = value;
+    }
     public bool IsPlayerDetected
     {
         set => _isPlayerDetected = value;
@@ -79,5 +84,10 @@ public class Boss : Enemy
             _attacks.Charge();
         else
             _attacks.ShootProjectile();
+    }
+
+    void StopMovement()
+    {
+        _movementSpeed = 0f;
     }
 }

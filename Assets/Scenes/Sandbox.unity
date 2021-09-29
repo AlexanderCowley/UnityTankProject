@@ -25177,6 +25177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obj_projectile: {fileID: 4447659612966597115, guid: e8a22b51e3a19be44ae6ee1da29b88df, type: 3}
+  _collectedParticles: {fileID: 834907349}
+  __collectedAudioClip: {fileID: 8300000, guid: 3eabe92c7faac7540b2248f3f5b10689, type: 3}
 --- !u!1 &1246039715
 GameObject:
   m_ObjectHideFlags: 0

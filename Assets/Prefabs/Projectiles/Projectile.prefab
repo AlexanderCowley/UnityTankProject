@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _moveSpeed: 3
-  disableDelay: 0
+  _fireSpeed: 2
+  disableDelay: 0.5
   _collectedParticles: {fileID: 2393322488345324516, guid: 74b39af053ad51442a1ee070d55eb947, type: 3}
   __collectedAudioClip: {fileID: 8300000, guid: 65b36919089288f4e994042e934ccb35, type: 3}

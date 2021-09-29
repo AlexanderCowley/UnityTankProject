@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Shoot : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     [SerializeField] Projectile _obj_projectile;
     [SerializeField] Transform firePos;
